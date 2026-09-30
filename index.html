@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Network World Models as Environments for Algorithm Design on Complex Systems">
+  <meta name="description" content="A learned, action-conditioned Network World Model serves as a fast simulator inside a coding-agent loop that designs algorithms for eight network tasks.">
+  <meta name="keywords" content="network world models, automated algorithm design, network learning, diffusion dynamics, graph neural networks, LLM program search, influence maximization, epidemic control">
+  <meta name="author" content="Rishab Alagharu, Hongji Pu, Zeeshan Memon, Xinyuan Song, Yuntong Hu, Liang Zhao">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Network World Models">
+  <meta property="og:title" content="Network World Models as Environments for Algorithm Design on Complex Systems">
+  <meta property="og:description" content="A learned, action-conditioned Network World Model serves as a fast simulator inside a coding-agent loop that designs algorithms for eight network tasks.">
+  <meta property="og:url" content="https://rishabsa.github.io/NetworkWorldModel/">
+  <meta property="og:image" content="https://rishabsa.github.io/NetworkWorldModel/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A coding agent designs algorithms that a Network World Model rolls out on a network, with results across eight tasks.">
+  <meta property="article:section" content="Research">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Network World Models as Environments for Algorithm Design on Complex Systems">
+  <meta name="twitter:description" content="A learned, action-conditioned Network World Model serves as a fast simulator inside a coding-agent loop that designs algorithms for eight network tasks.">
+  <meta name="twitter:image" content="https://rishabsa.github.io/NetworkWorldModel/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="A coding agent designs algorithms that a Network World Model rolls out on a network, with results across eight tasks.">
+
+  <!-- Academic metadata for indexers. TODO: add citation_pdf_url and citation_arxiv_id once the paper is on arXiv -->
+  <meta name="citation_title" content="Network World Models as Environments for Algorithm Design on Complex Systems">
+  <meta name="citation_author" content="Alagharu, Rishab">
+  <meta name="citation_author" content="Pu, Hongji">
+  <meta name="citation_author" content="Memon, Zeeshan">
+  <meta name="citation_author" content="Song, Xinyuan">
+  <meta name="citation_author" content="Hu, Yuntong">
+  <meta name="citation_author" content="Zhao, Liang">
+  <meta name="citation_publication_date" content="2026">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>Network World Models as Environments for Algorithm Design on Complex Systems</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
+
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS -->
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Math rendering -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+      chtml: { scale: 1.0 },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <!-- Structured data for academic papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Network World Models as Environments for Algorithm Design on Complex Systems",
+    "description": "A learned, action-conditioned Network World Model serves as a fast simulator inside a coding-agent loop that designs algorithms for eight network tasks.",
+    "author": [
+      {"@type": "Person", "name": "Rishab Alagharu", "affiliation": {"@type": "Organization", "name": "Emory University"}},
+      {"@type": "Person", "name": "Hongji Pu", "affiliation": {"@type": "Organization", "name": "University of Illinois Urbana-Champaign"}},
+      {"@type": "Person", "name": "Zeeshan Memon", "affiliation": {"@type": "Organization", "name": "Emory University"}},
+      {"@type": "Person", "name": "Xinyuan Song", "affiliation": {"@type": "Organization", "name": "Emory University"}},
+      {"@type": "Person", "name": "Yuntong Hu", "affiliation": {"@type": "Organization", "name": "Emory University"}},
+      {"@type": "Person", "name": "Liang Zhao", "affiliation": {"@type": "Organization", "name": "Emory University"}}
+    ],
+    "datePublished": "2026",
+    "url": "https://rishabsa.github.io/NetworkWorldModel/",
+    "image": "https://rishabsa.github.io/NetworkWorldModel/static/images/social_preview.png",
+    "keywords": ["network world models", "automated algorithm design", "network learning", "diffusion dynamics"],
+    "abstract": "World models, which simulate an environment and predict how it changes under actions, are increasingly used in real-world applications such as robotics. Complex systems call for the same tool because the effect of an action is not immediate. Seeding nodes for a campaign, or immunizing nodes against an epidemic, changes little on its own; what matters is the outcome that unfolds over the steps that follow. Designing an algorithm that selects such actions to maximize expected performance on a task is inherently iterative, and every candidate must be scored by the outcome it produces. Obtaining that outcome has relied on simulation, whose cost becomes a bottleneck when candidates are evaluated over many sampled trajectories. We propose an action-conditioned Network World Model that learns a network's diffusion dynamics under interventions over time, applies each action to the network, and predicts the outcome that follows. It serves as a fast evaluator inside an algorithm design loop in which a coding agent designs and refines executable algorithms using feedback from full rollouts, action-level credit, and counterfactual probes over alternative interventions. Across eight network tasks and five diffusion models, the designed algorithms match or exceed the strongest reported baseline in 118 of 121 settings while enabling up to 14.5 times faster rollouts than Monte Carlo simulation.",
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Network World Models as Environments for Algorithm Design on Complex Systems</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Rishab Alagharu<sup>1</sup>,</span>
+              <span class="author-block">Hongji Pu<sup>2</sup>,</span>
+              <span class="author-block">Zeeshan Memon<sup>1</sup>,</span>
+              <span class="author-block">Xinyuan Song<sup>1</sup>,</span>
+              <span class="author-block">Yuntong Hu<sup>1</sup>,</span>
+              <span class="author-block">Liang Zhao<sup>1,&dagger;</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors publication-affiliations">
+              <span class="author-block"><sup>1</sup>Emory University</span>
+              <span class="author-block"><sup>2</sup>University of Illinois Urbana-Champaign</span>
+              <span class="eql-cntrb"><small><br><sup>&dagger;</sup>Corresponding author</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- TODO: replace XXXX.XXXXX with the arXiv ID once the paper is posted -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/XXXX.XXXXX" target="_blank" rel="noopener"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+
+                <!-- Code button: set the href and uncomment to show it.
+                <span class="link-block">
+                  <a href="#" target="_blank" rel="noopener"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Teaser figure -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <figure class="teaser-figure">
+          <img src="static/images/headline_figure.png" width="2246" height="829"
+               alt="Left: a coding agent writes an algorithm, a Network World Model rolls out how its chosen seeds spread over a network and returns a reward per round. Right: a radar chart over eight tasks where the designed algorithms exceed the strongest baseline.">
+        </figure>
+        <h2 class="subtitle has-text-centered teaser-caption">
+          A coding agent writes algorithms that choose interventions on a network, and a Network World Model rolls out how each choice unfolds, returning a reward, feedback, and probe answers the agent uses to improve the algorithm (left). Across eight tasks on complex networks, the agent-designed algorithms outperform the strongest baselines, averaged over budgets (right).
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light" id="abstract">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>World models, which simulate an environment and predict how it changes under actions, are increasingly used in real-world applications such as robotics. Complex systems call for the same tool because the effect of an action is not immediate. Seeding nodes for a campaign, or immunizing nodes against an epidemic, changes little on its own; what matters is the outcome that unfolds over the steps that follow. Designing an algorithm that selects such actions to maximize expected performance on a task is inherently iterative, and every candidate must be scored by the outcome it produces. Obtaining that outcome has relied on simulation, whose cost becomes a bottleneck when candidates are evaluated over many sampled trajectories. We propose an action-conditioned Network World Model that learns a network's diffusion dynamics under interventions over time, applies each action to the network, and predicts the outcome that follows. It serves as a fast evaluator inside an algorithm design loop in which a coding agent designs and refines executable algorithms using feedback from full rollouts, action-level credit, and counterfactual probes over alternative interventions. Across eight network tasks and five diffusion models, the designed algorithms match or exceed the strongest reported baseline in 118 of 121 settings while enabling up to 14.5 times faster rollouts than Monte Carlo simulation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Key results -->
+  <section class="section" id="highlights">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Key Results</h2>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-value">118<span class="stat-of">/121</span></div>
+          <div class="stat-label">settings where the designed algorithm matches or exceeds the strongest reported baseline</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">14.5&times;</div>
+          <div class="stat-label">faster rollouts than Monte Carlo simulation on Digg (116,893 nodes)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">0.11%</div>
+          <div class="stat-label">selection regret against Monte Carlo on held-out SBM networks</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">8</div>
+          <div class="stat-label">network tasks under five diffusion models: IC, LT, CLT, SIR, and SIS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Method -->
+  <section class="section hero is-light" id="method">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <div class="content section-lead">
+        <p>
+          A task instance fixes a network, its diffusion process, the constraints on actions, and a horizon \(H\). An algorithm returns a plan of actions, and the plan is scored by the outcome the network reaches after \(H\) steps. Computing that outcome exactly is #P-hard, so every candidate must be scored from many sampled trajectories, and simulation becomes the bottleneck of the search. We split the problem in two: learn a world model of the dynamics under interventions, then search for algorithms against it.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <div class="method-head">
+          <span class="method-icon is-blue"><i class="fas fa-project-diagram"></i></span>
+          <h3 class="title is-4">Network World Model</h3>
+        </div>
+        <div class="content">
+          <p>
+            An action changes the network in two ways: through an immediate effect that is known exactly, and through the diffusion that follows. The model applies the first and learns the second:
+          </p>
+          <div class="equation">
+            \[ (\mathcal{G}_t^{+},\mathbf{s}_t^{+}) = T_{\mathrm{exo}}(\mathcal{G}_t,\mathbf{s}_t,a_t), \qquad \hat{\mathbf{s}}_{t+1} = f_{\theta}\big(\mathcal{G}_t^{+},\mathbf{s}_t^{+},\boldsymbol{\eta}(a_t)\big) \]
+          </div>
+          <ul class="method-list">
+            <li><strong>Exact interventions.</strong> \(T_{\mathrm{exo}}\) writes each action into the network and its state before diffusion takes its step: a seeded node, a removed node or edge, or a changed contact weight. Applying the intervention exactly removes intervention error from the rollout bound and tightens the selection guarantee below.</li>
+            <li><strong>Action conditioning.</strong> Features \(\boldsymbol{\eta}(a_t)\) record which operation touched each node and edge and by how much, because distinct operations can leave similar post-intervention states. Message passing runs on the edited network, so removed edges carry no messages and downweighted edges contribute proportionally less.</li>
+            <li><strong>Structured transition head.</strong> The readout is constrained to the known form of the process, leaving only its parameters to learn. For a cascade, \(g(\mathbf{h}_v) = 1-\prod_{u\to v}(1-q_{uv}z_u)\), where \(q_{uv}\) is a learned transmission probability and \(z_u\) marks the frontier.</li>
+            <li><strong>Sampled rollouts.</strong> Each step draws a state instead of carrying probabilities forward, which keeps every trajectory consistent with the process. A candidate and the current best are advanced under common random numbers, so their difference is not dominated by process variance.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="method-block">
+        <div class="method-head">
+          <span class="method-icon is-amber"><i class="fas fa-code"></i></span>
+          <h3 class="title is-4">Algorithm Design Loop</h3>
+        </div>
+        <div class="content">
+          <p>
+            Each round, an LLM coding agent writes an executable candidate algorithm, drawing on a library of classical algorithms for the task that it may reuse, combine, or extend. The Network World Model rolls out the candidate and the current best algorithm on the same \(n\) sampled trajectories. Search operators favor exploration early and increasingly refine the current best algorithm as evidence accumulates. Beyond the task score, the model returns three kinds of feedback, one for each way a plan can be revised:
+          </p>
+          <div class="feedback-grid">
+            <div class="feedback-card">
+              <h4>Rollout diagnostics</h4>
+              <p>How the process evolved under the plan: the score and its standard error, the nodes reached at each step, and the step at which spreading stops. They come from the scoring rollouts at no extra cost.</p>
+            </div>
+            <div class="feedback-card">
+              <h4>Action-level credit</h4>
+              <p>What each action contributed, measured by removing it under the same rollout seed:</p>
+              <div class="equation is-small">\[ c_j = \hat R_{\mathcal{E}}(\mathbf{a};\xi) - \hat R_{\mathcal{E}}(\mathbf{a}_{-j};\xi) \]</div>
+            </div>
+            <div class="feedback-card">
+              <h4>Counterfactual probes</h4>
+              <p>Before writing the next candidate, the agent asks what-if questions about actions outside the plan, such as swapping a seed. One probe uses gradients from a mean-field rollout to flag promising and weak actions.</p>
+            </div>
+          </div>
+          <p>
+            <strong>Paired selection.</strong> A fresh seed \(\xi\) is drawn every round, and the candidate \(\pi\) replaces the current best \(\hat{\pi}\) only when its mean paired gain clears the standard error of the paired differences:
+          </p>
+          <div class="equation">
+            \[ \Delta_i = R_i(\pi;\xi) - R_i(\hat{\pi};\xi), \qquad \Delta = \frac{1}{n}\sum_{i=1}^{n}\Delta_i, \qquad \text{accept if } \Delta > b = \frac{\operatorname{sd}(\Delta_1,\ldots,\Delta_n)}{\sqrt{n}} \]
+          </div>
+          <p>
+            Re-scoring the incumbent on the fresh seed every round keeps a favorable realization from carrying it forward.
+          </p>
+        </div>
+      </div>
+
+      <div class="method-block">
+        <div class="method-head">
+          <span class="method-icon is-green"><i class="fas fa-shield-alt"></i></span>
+          <h3 class="title is-4">Reliability of World-Model-Based Selection</h3>
+        </div>
+        <div class="content">
+          <p>
+            Suppose the one-step transition error of the Network World Model is at most \(\epsilon\) over the states that algorithms in the search space \(\Pi\) can reach within the horizon \(H\), the task score has range at most \(B_R\), and the returned algorithm \(\hat{\pi}\) is \(\eta_{\mathrm{search}}\)-suboptimal under the learned evaluator. Then its selection regret under the true dynamics \(P\) is bounded:
+          </p>
+          <div class="equation">
+            \[ \operatorname{Reg}_P(\hat{\pi};\Pi) = J_P(\pi^\star) - J_P(\hat{\pi}) \;\le\; 2B_R H\epsilon + \eta_{\mathrm{search}} \]
+          </div>
+          <p>
+            Exact reproduction of every rollout is not required for reliable selection: the downstream loss is controlled by the accumulated transition error and the search error. The paper also proves that pairwise rankings are preserved and that the best algorithm is recovered exactly under a sufficient selection margin.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Tasks -->
+  <section class="section" id="tasks">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Eight Tasks, Five Diffusion Models</h2>
+      <div class="content section-lead">
+        <p>
+          One world model design and one search loop cover three problem families. Every task is evaluated on real networks with about \(10^3\) to more than \(10^5\) nodes. Five tasks intervene on a spreading process, two infer its hidden cause, and one forecasts real cascades.
+        </p>
+      </div>
+      <div class="task-grid">
+        <div class="task-card is-intervention">
+          <span class="task-family">Intervention</span>
+          <h4>Influence maximization</h4>
+          <p>Choose seed nodes whose cascade reaches the most nodes.</p>
+          <p class="task-meta">IC, LT &middot; final spread (&uarr;)</p>
+        </div>
+        <div class="task-card is-intervention">
+          <span class="task-family">Intervention</span>
+          <h4>Adaptive influence maximization</h4>
+          <p>Commit seeds over rounds, each after observing how the last batch spread.</p>
+          <p class="task-meta">IC, LT &middot; final spread (&uarr;)</p>
+        </div>
+        <div class="task-card is-intervention">
+          <span class="task-family">Intervention</span>
+          <h4>Critical node detection</h4>
+          <p>Remove nodes ahead of a known outbreak to contain it.</p>
+          <p class="task-meta">IC, LT &middot; final infected (&darr;)</p>
+        </div>
+        <div class="task-card is-intervention">
+          <span class="task-family">Intervention</span>
+          <h4>Influence blocking</h4>
+          <p>Counter-seed, block nodes or arcs, or cut weights against a spreading rumor.</p>
+          <p class="task-meta">IC, CLT &middot; final rumor size (&darr;)</p>
+        </div>
+        <div class="task-card is-intervention">
+          <span class="task-family">Intervention</span>
+          <h4>Epidemic control</h4>
+          <p>Vaccinate, quarantine, cut arcs, or reduce contacts to limit an epidemic.</p>
+          <p class="task-meta">SIR, SIS &middot; attack rate (&darr;)</p>
+        </div>
+        <div class="task-card is-inverse">
+          <span class="task-family">Inverse</span>
+          <h4>Source localization</h4>
+          <p>Name the source set behind an observed spread.</p>
+          <p class="task-meta">IC, LT &middot; consistency with the observation (&uarr;)</p>
+        </div>
+        <div class="task-card is-inverse">
+          <span class="task-family">Inverse</span>
+          <h4>Cascade reconstruction</h4>
+          <p>Recover who was infected, when, and by whom from a partial observation.</p>
+          <p class="task-meta">IC, LT &middot; likelihood of the history (&uarr;)</p>
+        </div>
+        <div class="task-card is-forecast">
+          <span class="task-family">Forecasting</span>
+          <h4>Cascade prediction</h4>
+          <p>Predict the final popularity of a real, partly observed cascade. No simulator is involved.</p>
+          <p class="task-meta">Logged cascades &middot; MSLE (&darr;)</p>
+        </div>
+      </div>
+
+      <details class="datasets-details">
+        <summary>Datasets: 17 networks, from 1,005 to 616,316 nodes</summary>
+        <div class="table-scroll">
+          <table class="results-table datasets-table">
+            <thead>
+              <tr><th>Dataset</th><th>Nodes</th><th>Edges</th><th>Tasks</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Email-EU</td><td>1,005</td><td>24,929</td><td>Influence blocking</td></tr>
+              <tr><td>UCI Students</td><td>1,266</td><td>6,451</td><td>Cascade reconstruction</td></tr>
+              <tr><td>Network Science</td><td>1,589</td><td>2,742</td><td>Influence maximization, adaptive influence maximization</td></tr>
+              <tr><td>Cora-ML</td><td>2,810</td><td>7,981</td><td>Source localization</td></tr>
+              <tr><td>Power Grid</td><td>4,941</td><td>6,594</td><td>Critical node detection, source localization</td></tr>
+              <tr><td>CA-GrQc</td><td>5,242</td><td>14,484</td><td>Cascade reconstruction</td></tr>
+              <tr><td>Oregon1</td><td>10,670</td><td>22,002</td><td>Epidemic control</td></tr>
+              <tr><td>PGP</td><td>10,680</td><td>24,316</td><td>Critical node detection</td></tr>
+              <tr><td>Infectious SocioPatterns</td><td>10,972</td><td>44,517</td><td>Epidemic control</td></tr>
+              <tr><td>NetHEPT</td><td>15,229</td><td>62,752</td><td>Influence maximization, adaptive influence maximization</td></tr>
+              <tr><td>Gnutella24</td><td>26,518</td><td>65,369</td><td>Influence blocking</td></tr>
+              <tr><td>Taoke</td><td>29,711</td><td>95,012</td><td>Cascade prediction</td></tr>
+              <tr><td>Deezer</td><td>47,538</td><td>222,887</td><td>Source localization</td></tr>
+              <tr><td>Gnutella31</td><td>62,561</td><td>147,878</td><td>Critical node detection</td></tr>
+              <tr><td>Digg</td><td>116,893</td><td>2,011,447</td><td>Influence maximization, adaptive influence maximization</td></tr>
+              <tr><td>Digg (cascades)</td><td>279,630</td><td>1,731,653</td><td>Cascade prediction</td></tr>
+              <tr><td>APS</td><td>616,316</td><td>3,304,400</td><td>Cascade prediction</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">For the three cascade-prediction corpora, the counts describe the full underlying network, while the runs replay a subsample restricted to the most active participants.</p>
+      </details>
+    </div>
+  </section>
+
+
+  <!-- Results -->
+  <section class="section hero is-light" id="results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Results</h2>
+      <div class="content section-lead">
+        <p>
+          Every returned algorithm and every baseline is replayed independently on the trusted Monte Carlo simulator with 200 samples, so the world model used during the search never scores its own results. The design loop runs \(G = 10\) rounds with \(n = 200\) sampled rollouts per evaluation, horizon \(H = 10\), and six probes per round, with GPT-5.6 Sol as the coding agent.
+        </p>
+      </div>
+
+      <h3 class="title is-4 subsection-title">Designed algorithms against the strongest baselines</h3>
+      <div class="content">
+        <p>
+          The designed algorithms improve on the strongest existing method in seven tasks and match it on epidemic control, matching or exceeding the strongest reported baseline in 118 of 121 settings. Each cell reports IC&nbsp;/&nbsp;LT (IC&nbsp;/&nbsp;CLT for influence blocking, SIR&nbsp;/&nbsp;SIS for epidemic control). Bold marks the best value, and n/a marks an out-of-memory error or a timeout.
+        </p>
+      </div>
+      <div class="results-tabs">
+<div class="task-tabs" role="tablist">
+<button class="task-tab is-active" role="tab" aria-selected="true" aria-controls="task-influence-maximization" data-target="task-influence-maximization">Influence maximization</button>
+<button class="task-tab" role="tab" aria-selected="false" aria-controls="task-adaptive-influence-maximization" data-target="task-adaptive-influence-maximization">Adaptive influence maximization</button>
+<button class="task-tab" role="tab" aria-selected="false" aria-controls="task-critical-node-detection" data-target="task-critical-node-detection">Critical node detection</button>
+<button class="task-tab" role="tab" aria-selected="false" aria-controls="task-influence-blocking" data-target="task-influence-blocking">Influence blocking</button>
+<button class="task-tab" role="tab" aria-selected="false" aria-controls="task-epidemic-control" data-target="task-epidemic-control">Epidemic control</button>
+<button class="task-tab" role="tab" aria-selected="false" aria-controls="task-source-localization" data-target="task-source-localization">Source localization</button>
+<button class="task-tab" role="tab" aria-selected="false" aria-controls="task-cascade-reconstruction" data-target="task-cascade-reconstruction">Cascade reconstruction</button>
+<button class="task-tab" role="tab" aria-selected="false" aria-controls="task-cascade-prediction" data-target="task-cascade-prediction">Cascade prediction</button>
+</div>
+<div class="task-panel is-active" id="task-influence-maximization" role="tabpanel">
+  <p class="table-caption"><strong>Influence maximization</strong> (IC / LT): spread, % of nodes activated (↑)</p>
+  <div class="table-scroll">
+    <table class="results-table">
+      <thead>
+        <tr><th></th><th colspan="4" class="group-head">Network Science (1,589 nodes)</th><th colspan="4" class="group-head">Digg (116,893 nodes)</th></tr>
+        <tr><th>Method</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>IMM</td><td>8.7<span class="pair-sep">/</span>10.9</td><td>24.8<span class="pair-sep">/</span>30.2</td><td>38.0<span class="pair-sep">/</span>45.1</td><td>59.2<span class="pair-sep">/</span>68.5</td><td>25.9<span class="pair-sep">/</span>47.0</td><td>36.0<span class="pair-sep">/</span>60.9</td><td>44.2<span class="pair-sep">/</span>69.7</td><td>55.7<span class="pair-sep">/</span>79.6</td></tr>
+        <tr><td>OPIM</td><td>8.8<span class="pair-sep">/</span>10.8</td><td>24.2<span class="pair-sep">/</span>29.5</td><td>37.7<span class="pair-sep">/</span>45.3</td><td>58.3<span class="pair-sep">/</span>67.4</td><td>27.4<span class="pair-sep">/</span>50.5</td><td>41.6<span class="pair-sep">/</span>68.4</td><td>51.8<span class="pair-sep">/</span>77.6</td><td>62.7<span class="pair-sep">/</span>85.5</td></tr>
+        <tr><td>SubSIM</td><td>8.7<span class="pair-sep">/</span>10.7</td><td>24.3<span class="pair-sep">/</span>29.1</td><td>37.3<span class="pair-sep">/</span>45.0</td><td>57.8<span class="pair-sep">/</span>68.5</td><td>27.3<span class="pair-sep">/</span>50.1</td><td>41.7<span class="pair-sep">/</span>68.4</td><td>51.8<span class="pair-sep">/</span>77.7</td><td>62.7<span class="pair-sep">/</span>85.4</td></tr>
+        <tr><td>DeepIM</td><td>4.8<span class="pair-sep">/</span>5.3</td><td>15.3<span class="pair-sep">/</span>20.0</td><td>27.7<span class="pair-sep">/</span>32.9</td><td>45.8<span class="pair-sep">/</span>53.0</td><td><span class="na">n/a</span></td><td><span class="na">n/a</span></td><td><span class="na">n/a</span></td><td><span class="na">n/a</span></td></tr>
+        <tr><td>DegreeDiscount</td><td>8.3<span class="pair-sep">/</span>10.7</td><td>23.7<span class="pair-sep">/</span>29.7</td><td>36.3<span class="pair-sep">/</span>44.5</td><td>55.0<span class="pair-sep">/</span>65.5</td><td>26.0<span class="pair-sep">/</span>49.6</td><td>37.0<span class="pair-sep">/</span>62.7</td><td>45.8<span class="pair-sep">/</span>70.0</td><td>60.0<span class="pair-sep">/</span>81.6</td></tr>
+        <tr class="ours"><td>Network World Model</td><td><strong>8.9</strong><span class="pair-sep">/</span><strong>11.3</strong></td><td><strong>25.3</strong><span class="pair-sep">/</span><strong>30.9</strong></td><td><strong>39.1</strong><span class="pair-sep">/</span><strong>46.8</strong></td><td><strong>60.1</strong><span class="pair-sep">/</span><strong>69.3</strong></td><td><strong>30.4</strong><span class="pair-sep">/</span><strong>56.8</strong></td><td><strong>45.8</strong><span class="pair-sep">/</span><strong>73.2</strong></td><td><strong>56.5</strong><span class="pair-sep">/</span><strong>83.1</strong></td><td><strong>69.4</strong><span class="pair-sep">/</span><strong>93.5</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="task-panel" id="task-adaptive-influence-maximization" role="tabpanel">
+  <p class="table-caption"><strong>Adaptive influence maximization</strong> (IC / LT): spread, % of nodes activated (↑)</p>
+  <div class="table-scroll">
+    <table class="results-table">
+      <thead>
+        <tr><th></th><th colspan="4" class="group-head">Network Science (1,589 nodes)</th><th colspan="4" class="group-head">Digg (116,893 nodes)</th></tr>
+        <tr><th>Method</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>EPIC</td><td>8.4<span class="pair-sep">/</span>10.8</td><td>23.1<span class="pair-sep">/</span>28.7</td><td>34.6<span class="pair-sep">/</span>41.5</td><td>52.9<span class="pair-sep">/</span>62.3</td><td>27.5<span class="pair-sep">/</span>48.4</td><td>40.0<span class="pair-sep">/</span>65.8</td><td>49.0<span class="pair-sep">/</span>74.0</td><td>60.7<span class="pair-sep">/</span>82.4</td></tr>
+        <tr><td>Adaptive DegreeDiscount</td><td>8.2<span class="pair-sep">/</span>10.8</td><td>23.6<span class="pair-sep">/</span>30.2</td><td>36.5<span class="pair-sep">/</span>45.8</td><td>56.9<span class="pair-sep">/</span>69.3</td><td>29.0<span class="pair-sep">/</span>54.2</td><td>43.5<span class="pair-sep">/</span>68.9</td><td>54.8<span class="pair-sep">/</span>79.4</td><td>69.3<span class="pair-sep">/</span>93.6</td></tr>
+        <tr><td>IMM</td><td>8.7<span class="pair-sep">/</span>10.9</td><td>24.8<span class="pair-sep">/</span>30.2</td><td>38.0<span class="pair-sep">/</span>45.1</td><td>59.2<span class="pair-sep">/</span>68.5</td><td>25.9<span class="pair-sep">/</span>47.0</td><td>36.0<span class="pair-sep">/</span>60.9</td><td>44.2<span class="pair-sep">/</span>69.7</td><td>55.7<span class="pair-sep">/</span>79.6</td></tr>
+        <tr><td>Static-Split</td><td>8.3<span class="pair-sep">/</span>10.7</td><td>24.1<span class="pair-sep">/</span>30.3</td><td>37.5<span class="pair-sep">/</span>45.9</td><td>58.1<span class="pair-sep">/</span>69.3</td><td>26.4<span class="pair-sep">/</span>49.6</td><td>38.7<span class="pair-sep">/</span>64.5</td><td>49.0<span class="pair-sep">/</span>73.8</td><td>65.1<span class="pair-sep">/</span>87.5</td></tr>
+        <tr class="ours"><td>Network World Model</td><td><strong>8.9</strong><span class="pair-sep">/</span><strong>11.3</strong></td><td><strong>25.2</strong><span class="pair-sep">/</span><strong>30.9</strong></td><td><strong>39.1</strong><span class="pair-sep">/</span><strong>46.8</strong></td><td><strong>60.0</strong><span class="pair-sep">/</span><strong>69.4</strong></td><td><strong>30.4</strong><span class="pair-sep">/</span><strong>56.8</strong></td><td><strong>45.6</strong><span class="pair-sep">/</span><strong>73.2</strong></td><td><strong>56.4</strong><span class="pair-sep">/</span><strong>83.0</strong></td><td><strong>71.9</strong><span class="pair-sep">/</span><strong>94.0</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="task-panel" id="task-critical-node-detection" role="tabpanel">
+  <p class="table-caption"><strong>Critical node detection</strong> (IC / LT): remaining spread, % of nodes infected (↓)</p>
+  <div class="table-scroll">
+    <table class="results-table">
+      <thead>
+        <tr><th></th><th colspan="4" class="group-head">Power Grid (4,941 nodes)</th><th colspan="4" class="group-head">PGP (10,680 nodes)</th></tr>
+        <tr><th>Method</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>HDA</td><td>26.5<span class="pair-sep">/</span>28.9</td><td>24.0<span class="pair-sep">/</span>27.1</td><td>21.8<span class="pair-sep">/</span>25.4</td><td>18.6<span class="pair-sep">/</span>22.3</td><td>26.4<span class="pair-sep">/</span>31.9</td><td>23.3<span class="pair-sep">/</span>28.5</td><td>20.8<span class="pair-sep">/</span>25.6</td><td>18.0<span class="pair-sep">/</span>21.6</td></tr>
+        <tr><td>BPD+R</td><td>26.7<span class="pair-sep">/</span>29.1</td><td>24.1<span class="pair-sep">/</span>27.5</td><td>21.9<span class="pair-sep">/</span>25.8</td><td>18.5<span class="pair-sep">/</span>22.4</td><td>26.4<span class="pair-sep">/</span>32.0</td><td><span class="na">n/a</span></td><td>21.2<span class="pair-sep">/</span>25.8</td><td>18.0<span class="pair-sep">/</span>21.6</td></tr>
+        <tr><td>CI+R</td><td>26.7<span class="pair-sep">/</span>29.0</td><td>24.1<span class="pair-sep">/</span>27.3</td><td>21.9<span class="pair-sep">/</span>25.7</td><td>18.5<span class="pair-sep">/</span>22.3</td><td>26.6<span class="pair-sep">/</span>32.0</td><td>23.4<span class="pair-sep">/</span>28.5</td><td>21.2<span class="pair-sep">/</span>25.9</td><td>18.1<span class="pair-sep">/</span>21.6</td></tr>
+        <tr><td>EI</td><td>26.8<span class="pair-sep">/</span>29.2</td><td>24.5<span class="pair-sep">/</span>27.9</td><td>22.1<span class="pair-sep">/</span>26.0</td><td>19.1<span class="pair-sep">/</span>23.2</td><td>26.5<span class="pair-sep">/</span>32.0</td><td>23.5<span class="pair-sep">/</span>28.8</td><td>21.1<span class="pair-sep">/</span>25.9</td><td>18.2<span class="pair-sep">/</span>22.2</td></tr>
+        <tr><td>Frontier</td><td>26.3<span class="pair-sep">/</span>28.6</td><td>22.7<span class="pair-sep">/</span>25.0</td><td>18.7<span class="pair-sep">/</span>20.4</td><td>10.7<span class="pair-sep">/</span><strong>10.7</strong></td><td>26.7<span class="pair-sep">/</span>32.0</td><td>23.4<span class="pair-sep">/</span>27.9</td><td>20.2<span class="pair-sep">/</span>23.6</td><td>14.2<span class="pair-sep">/</span>14.5</td></tr>
+        <tr class="ours"><td>Network World Model</td><td><strong>26.2</strong><span class="pair-sep">/</span><strong>28.2</strong></td><td><strong>22.0</strong><span class="pair-sep">/</span><strong>24.1</strong></td><td><strong>17.3</strong><span class="pair-sep">/</span><strong>19.6</strong></td><td><strong>10.2</strong><span class="pair-sep">/</span><strong>10.7</strong></td><td><strong>25.8</strong><span class="pair-sep">/</span><strong>31.1</strong></td><td><strong>21.3</strong><span class="pair-sep">/</span><strong>26.7</strong></td><td><strong>16.5</strong><span class="pair-sep">/</span><strong>21.5</strong></td><td><strong>11.0</strong><span class="pair-sep">/</span><strong>13.0</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="task-panel" id="task-influence-blocking" role="tabpanel">
+  <p class="table-caption"><strong>Influence blocking</strong> (IC / CLT): rumor cascade size (nodes) (↓)</p>
+  <div class="table-scroll">
+    <table class="results-table">
+      <thead>
+        <tr><th></th><th colspan="4" class="group-head">Email-EU (1,005 nodes)</th><th colspan="4" class="group-head">Gnutella24 (26,518 nodes)</th></tr>
+        <tr><th>Method</th><th>10</th><th>20</th><th>40</th><th>50</th><th>10</th><th>20</th><th>40</th><th>50</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>RPS</td><td>60.2<span class="pair-sep">/</span><strong>70.9</strong></td><td>47.4<span class="pair-sep">/</span>56.7</td><td>35.0<span class="pair-sep">/</span>42.8</td><td>31.9<span class="pair-sep">/</span>39.1</td><td>1520.6<span class="pair-sep">/</span>1625.3</td><td>1311.6<span class="pair-sep">/</span>1380.6</td><td>1029.6<span class="pair-sep">/</span>1076.5</td><td>939.8<span class="pair-sep">/</span>980.4</td></tr>
+        <tr><td>Reverse</td><td>61.0<span class="pair-sep">/</span>73.1</td><td>49.2<span class="pair-sep">/</span>57.9</td><td>37.2<span class="pair-sep">/</span>44.8</td><td>34.5<span class="pair-sep">/</span>42.1</td><td>1817.6<span class="pair-sep">/</span>1961.8</td><td>1713.1<span class="pair-sep">/</span>1856.4</td><td>1462.0<span class="pair-sep">/</span>1587.7</td><td>1413.1<span class="pair-sep">/</span>1535.7</td></tr>
+        <tr><td>Proximity</td><td>63.1<span class="pair-sep">/</span>74.9</td><td>52.4<span class="pair-sep">/</span>61.2</td><td>39.6<span class="pair-sep">/</span>47.7</td><td>36.3<span class="pair-sep">/</span>44.2</td><td>2338.9<span class="pair-sep">/</span>2531.6</td><td>2289.9<span class="pair-sep">/</span>2481.1</td><td>2196.5<span class="pair-sep">/</span>2379.0</td><td>2141.1<span class="pair-sep">/</span>2319.7</td></tr>
+        <tr><td>GreedyReplace</td><td>92.2<span class="pair-sep">/</span>162.3</td><td>77.2<span class="pair-sep">/</span>163.5</td><td>60.1<span class="pair-sep">/</span>157.3</td><td>54.8<span class="pair-sep">/</span>154.9</td><td>1551.8<span class="pair-sep">/</span>1640.5</td><td>1364.9<span class="pair-sep">/</span>1449.2</td><td>1088.2<span class="pair-sep">/</span>1211.8</td><td>990.4<span class="pair-sep">/</span>1072.4</td></tr>
+        <tr><td>SandIMIN</td><td>92.5<span class="pair-sep">/</span>160.0</td><td>77.4<span class="pair-sep">/</span>158.7</td><td>63.7<span class="pair-sep">/</span>157.8</td><td>54.4<span class="pair-sep">/</span>150.9</td><td>1564.9<span class="pair-sep">/</span>1633.3</td><td>1391.2<span class="pair-sep">/</span>1456.3</td><td>1106.4<span class="pair-sep">/</span>1173.9</td><td>1017.8<span class="pair-sep">/</span>1096.9</td></tr>
+        <tr class="ours"><td>Network World Model</td><td><strong>59.4</strong><span class="pair-sep">/</span>71.7</td><td><strong>46.3</strong><span class="pair-sep">/</span><strong>55.4</strong></td><td><strong>34.5</strong><span class="pair-sep">/</span><strong>42.2</strong></td><td><strong>31.0</strong><span class="pair-sep">/</span><strong>38.7</strong></td><td><strong>1503.3</strong><span class="pair-sep">/</span><strong>1582.3</strong></td><td><strong>1275.0</strong><span class="pair-sep">/</span><strong>1333.8</strong></td><td><strong>985.6</strong><span class="pair-sep">/</span><strong>1023.0</strong></td><td><strong>896.0</strong><span class="pair-sep">/</span><strong>924.7</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="task-panel" id="task-epidemic-control" role="tabpanel">
+  <p class="table-caption"><strong>Epidemic control</strong> (SIR / SIS): attack rate, % of nodes ever infected (↓)</p>
+  <div class="table-scroll">
+    <table class="results-table">
+      <thead>
+        <tr><th></th><th colspan="4" class="group-head">Infectious SocioPatterns (10,972 nodes)</th><th colspan="4" class="group-head">Oregon1 (10,670 nodes)</th></tr>
+        <tr><th>Method</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>DAVA</td><td><strong>19.9</strong><span class="pair-sep">/</span>23.0</td><td><strong>7.4</strong><span class="pair-sep">/</span>8.3</td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td>7.9<span class="pair-sep">/</span>9.6</td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td></tr>
+        <tr><td>NetShield+</td><td>21.2<span class="pair-sep">/</span>24.9</td><td>17.3<span class="pair-sep">/</span>20.6</td><td>12.8<span class="pair-sep">/</span>15.6</td><td>7.4<span class="pair-sep">/</span>8.9</td><td>4.3<span class="pair-sep">/</span>5.4</td><td>2.1<span class="pair-sep">/</span>2.3</td><td>1.8<span class="pair-sep">/</span>1.9</td><td>1.6<span class="pair-sep">/</span>1.7</td></tr>
+        <tr><td>GreedyWalk</td><td>20.9<span class="pair-sep">/</span>24.6</td><td>16.5<span class="pair-sep">/</span>19.8</td><td>12.3<span class="pair-sep">/</span>14.9</td><td>7.0<span class="pair-sep">/</span>8.5</td><td>4.8<span class="pair-sep">/</span>5.9</td><td>2.5<span class="pair-sep">/</span>2.8</td><td>1.9<span class="pair-sep">/</span>2.1</td><td>1.6<span class="pair-sep">/</span>1.7</td></tr>
+        <tr><td>EI</td><td>20.7<span class="pair-sep">/</span>24.4</td><td>16.3<span class="pair-sep">/</span>19.3</td><td>11.5<span class="pair-sep">/</span>13.6</td><td>8.1<span class="pair-sep">/</span>9.5</td><td>4.2<span class="pair-sep">/</span>5.2</td><td>2.0<span class="pair-sep">/</span>2.1</td><td>1.7<span class="pair-sep">/</span>1.8</td><td>1.6<span class="pair-sep">/</span>1.6</td></tr>
+        <tr><td>CI</td><td>20.7<span class="pair-sep">/</span>24.3</td><td>16.1<span class="pair-sep">/</span>18.9</td><td>12.4<span class="pair-sep">/</span>14.6</td><td>6.9<span class="pair-sep">/</span>8.1</td><td>4.2<span class="pair-sep">/</span>5.2</td><td>2.0<span class="pair-sep">/</span>2.1</td><td>1.7<span class="pair-sep">/</span>1.8</td><td>1.6<span class="pair-sep">/</span>1.6</td></tr>
+        <tr class="ours"><td>Network World Model</td><td>20.4<span class="pair-sep">/</span><strong>19.5</strong></td><td>12.2<span class="pair-sep">/</span><strong>4.1</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>2.4</strong><span class="pair-sep">/</span><strong>4.3</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="task-panel" id="task-source-localization" role="tabpanel">
+  <p class="table-caption"><strong>Source localization</strong> (IC / LT): consistency of the recovered sources with the observation, 0 is perfect (↑)</p>
+  <div class="table-scroll">
+    <table class="results-table">
+      <thead>
+        <tr><th>Method</th><th>Cora-ML (2,810 nodes)</th><th>Power Grid (4,941 nodes)</th><th>Deezer (47,538 nodes)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>LPSI</td><td>−0.173<span class="pair-sep">/</span>−0.130</td><td>−0.106<span class="pair-sep">/</span>−0.100</td><td>−0.176<span class="pair-sep">/</span>−0.174</td></tr>
+        <tr><td>Rumor Centrality</td><td>−0.237<span class="pair-sep">/</span>−0.257</td><td>−0.242<span class="pair-sep">/</span>−0.260</td><td>−0.190<span class="pair-sep">/</span>−0.200</td></tr>
+        <tr><td>Dynamic Age</td><td>−0.200<span class="pair-sep">/</span>−0.183</td><td>−0.234<span class="pair-sep">/</span>−0.274</td><td>−0.178<span class="pair-sep">/</span>−0.183</td></tr>
+        <tr><td>Infected-Degree</td><td>−0.173<span class="pair-sep">/</span>−0.154</td><td>−0.116<span class="pair-sep">/</span>−0.119</td><td>−0.178<span class="pair-sep">/</span>−0.186</td></tr>
+        <tr><td>SL-VAE</td><td>−0.370<span class="pair-sep">/</span>−0.437</td><td>−0.306<span class="pair-sep">/</span>−0.323</td><td>−0.314<span class="pair-sep">/</span>−0.240</td></tr>
+        <tr class="ours"><td>Network World Model</td><td><strong>−0.139</strong><span class="pair-sep">/</span><strong>−0.106</strong></td><td><strong>−0.080</strong><span class="pair-sep">/</span><strong>−0.073</strong></td><td><strong>−0.147</strong><span class="pair-sep">/</span><strong>−0.145</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="task-panel" id="task-cascade-reconstruction" role="tabpanel">
+  <p class="table-caption"><strong>Cascade reconstruction</strong> (IC / LT): referee reward of the decoded history, 0 is perfect (↑)</p>
+  <div class="table-scroll">
+    <table class="results-table">
+      <thead>
+        <tr><th>Method</th><th>UCI Students (1,266 nodes)</th><th>CA-GrQc (5,242 nodes)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Reports</td><td>−0.852<span class="pair-sep">/</span>−0.946</td><td>−0.791<span class="pair-sep">/</span>−0.692</td></tr>
+        <tr><td>Steiner Tree</td><td>−0.901<span class="pair-sep">/</span>−0.978</td><td>−0.798<span class="pair-sep">/</span>−0.753</td></tr>
+        <tr><td>Jordan-Backward</td><td>−0.852<span class="pair-sep">/</span>−0.946</td><td>−0.791<span class="pair-sep">/</span>−0.692</td></tr>
+        <tr><td>DHREC</td><td>−1.464<span class="pair-sep">/</span>−1.525</td><td>−1.175<span class="pair-sep">/</span>−1.176</td></tr>
+        <tr><td>CRI</td><td>−0.885<span class="pair-sep">/</span>−0.995</td><td>−1.106<span class="pair-sep">/</span>−1.151</td></tr>
+        <tr class="ours"><td>Network World Model</td><td><strong>−0.675</strong><span class="pair-sep">/</span><strong>−0.717</strong></td><td><strong>−0.566</strong><span class="pair-sep">/</span><strong>−0.566</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="task-panel" id="task-cascade-prediction" role="tabpanel">
+  <p class="table-caption"><strong>Cascade prediction</strong> : MSLE at the prediction horizon (↓)</p>
+  <div class="table-scroll">
+    <table class="results-table">
+      <thead>
+        <tr><th>Method</th><th>APS (30,000 nodes)</th><th>Taoke (29,711 nodes)</th><th>Digg (5,000 nodes)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Persistence</td><td>0.288</td><td>1.101</td><td>4.222</td></tr>
+        <tr><td>Szabo-Huberman</td><td>0.098</td><td>0.716</td><td>0.834</td></tr>
+        <tr><td>Hawkes</td><td>0.141</td><td>0.957</td><td>2.744</td></tr>
+        <tr><td>RPP</td><td>0.116</td><td>1.009</td><td>3.283</td></tr>
+        <tr><td>Weng-Communities</td><td>0.196</td><td>0.850</td><td>1.142</td></tr>
+        <tr class="ours"><td>Network World Model</td><td><strong>0.078</strong></td><td><strong>0.544</strong></td><td><strong>0.774</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+      </div>
+
+      <h3 class="title is-4 subsection-title">Gains hold across budgets</h3>
+      <div class="figure-grid is-2">
+        <figure class="result-figure">
+          <a href="static/images/budget_im_digg.png" target="_blank" rel="noopener" title="Open full size"><img src="static/images/budget_im_digg.png" loading="lazy" alt="Spread against seed budget for influence maximization on Digg under IC."></a>
+          <figcaption>(a) Influence maximization, Digg (IC)</figcaption>
+        </figure>
+        <figure class="result-figure">
+          <a href="static/images/budget_aim_digg.png" target="_blank" rel="noopener" title="Open full size"><img src="static/images/budget_aim_digg.png" loading="lazy" alt="Spread against seed budget for adaptive influence maximization on Digg under IC."></a>
+          <figcaption>(b) Adaptive influence maximization, Digg (IC)</figcaption>
+        </figure>
+        <figure class="result-figure">
+          <a href="static/images/budget_cnd_pgp.png" target="_blank" rel="noopener" title="Open full size"><img src="static/images/budget_cnd_pgp.png" loading="lazy" alt="Remaining spread against removal budget for critical node detection on PGP under IC."></a>
+          <figcaption>(c) Critical node detection, PGP (IC)</figcaption>
+        </figure>
+        <figure class="result-figure">
+          <a href="static/images/budget_ib_gnutella24.png" target="_blank" rel="noopener" title="Open full size"><img src="static/images/budget_ib_gnutella24.png" loading="lazy" alt="Rumor cascade size against blocker budget for influence blocking on Gnutella24 under IC."></a>
+          <figcaption>(d) Influence blocking, Gnutella24 (IC)</figcaption>
+        </figure>
+      </div>
+      <p class="figure-note">Performance across intervention budgets under IC. Higher is better in (a) and (b); lower is better in (c) and (d).</p>
+
+      <h3 class="title is-4 subsection-title">Against LLM algorithm discovery systems</h3>
+      <div class="content">
+        <p>
+          EoH, OpenEvolve (the open-source implementation of AlphaEvolve), LLaMEA, and ReEvo each run their own search loop, prompts, and published defaults on the same problem, with a fitness function on the exact simulator and the same coding model. None of them sees the Network World Model. The design loop is best at every budget on both tasks, and none of the four systems reaches the strongest classical baseline on Network Science at any budget.
+        </p>
+      </div>
+<div class="table-scroll">
+<table class="results-table">
+<thead>
+<tr><th></th><th colspan="4" class="group-head">Influence maximization, Network Science (↑)</th><th colspan="4" class="group-head">Critical node detection, Power Grid (↓)</th></tr>
+<tr><th>Method</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th></tr>
+</thead>
+<tbody>
+<tr><td>EoH</td><td>5.5</td><td>19.5</td><td>32.5</td><td>54.6</td><td>26.6</td><td>23.4</td><td>19.4</td><td>14.3</td></tr>
+<tr><td>OpenEvolve</td><td>5.1</td><td>21.9</td><td>36.8</td><td>50.8</td><td>26.6</td><td>23.8</td><td>21.4</td><td>17.7</td></tr>
+<tr><td>LLaMEA</td><td>6.1</td><td>21.1</td><td>34.9</td><td>56.2</td><td>26.6</td><td>23.4</td><td>19.5</td><td>14.3</td></tr>
+<tr><td>ReEvo</td><td>6.6</td><td>22.3</td><td>35.5</td><td>57.0</td><td>26.6</td><td>23.5</td><td>19.6</td><td>15.0</td></tr>
+<tr class="ours"><td>Network World Model</td><td><strong>8.9</strong></td><td><strong>25.3</strong></td><td><strong>39.0</strong></td><td><strong>60.0</strong></td><td><strong>26.2</strong></td><td><strong>22.0</strong></td><td><strong>17.3</strong></td><td><strong>10.2</strong></td></tr>
+</tbody>
+</table>
+</div>
+      <p class="table-note">Influence maximization on Network Science (spread, % of nodes activated, higher is better) and critical node detection on Power Grid (remaining spread, % of nodes infected, lower is better), under IC. All rows use GPT-5.6 Sol.</p>
+
+      <div class="columns is-variable is-6 figure-pair">
+        <div class="column">
+          <h3 class="title is-4 subsection-title">Robust to the coding model</h3>
+          <figure class="result-figure">
+            <a href="static/images/coding_model.png" target="_blank" rel="noopener" title="Open full size"><img src="static/images/coding_model.png" loading="lazy" alt="Mean reward of the returned algorithm under three coding models against the strongest baseline, on Network Science and Power Grid."></a>
+          </figure>
+          <p class="figure-note">
+            Repeating the search with GPT-5.6 Sol, Terra, and Luna, the three finish within 0.1 points of one another on Network Science and within 0.3 points on Power Grid, averaged over budgets, and each beats the strongest baseline.
+          </p>
+        </div>
+        <div class="column">
+          <h3 class="title is-4 subsection-title">Transfers across networks</h3>
+          <figure class="result-figure">
+            <a href="static/images/transfer_cnd.png" target="_blank" rel="noopener" title="Open full size"><img src="static/images/transfer_cnd.png" loading="lazy" alt="Reward of the critical node detection algorithm designed on PGP, replayed on Power Grid and Gnutella31, relative to the strongest baseline."></a>
+          </figure>
+          <p class="figure-note">
+            The critical node detection algorithm designed on PGP, replayed unmodified, beats the strongest baseline on Power Grid by 4.0% and on Gnutella31 by 11.7%. Transferred algorithms stay within 0.1 percentage points of algorithms designed directly on the target network.
+          </p>
+        </div>
+      </div>
+
+      <div class="columns is-variable is-6 figure-pair">
+        <div class="column">
+          <h3 class="title is-4 subsection-title">Scales to larger networks</h3>
+          <figure class="result-figure">
+            <a href="static/images/scale_im.png" target="_blank" rel="noopener" title="Open full size"><img src="static/images/scale_im.png" loading="lazy" alt="Influence maximization spread of the Network World Model and the strongest baseline on Network Science, NetHEPT, and Digg at the 10% budget."></a>
+          </figure>
+          <p class="figure-note">
+            Influence maximization under IC at the 10% budget. The designed algorithm stays ahead of the strongest baseline from Network Science to Digg, and the gain grows from 1 to 4% on Network Science to 7 to 12% on Digg.
+          </p>
+        </div>
+        <div class="column">
+          <h3 class="title is-4 subsection-title">Cheaper than simulation</h3>
+          <figure class="result-figure">
+            <a href="static/images/cost_per_rollout.png" target="_blank" rel="noopener" title="Open full size"><img src="static/images/cost_per_rollout.png" loading="lazy" alt="Time per rollout of the Network World Model and Monte Carlo simulation on Power Grid and Digg, log scale."></a>
+          </figure>
+          <p class="figure-note">
+            One world model rollout is 4.0&times; faster than Monte Carlo simulation on Power Grid and 14.5&times; faster on Digg. Building the training set costs 38,800 simulator episodes once, while a simulator-based search needs 7,800 episodes every time it runs, so the model pays for itself after about five searches.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- World model quality -->
+  <section class="section" id="world-model">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">How Accurate Is the World Model?</h2>
+      <div class="content section-lead">
+        <p>
+          Algorithm design needs three things from the world model: accurate rollouts, reliable candidate selection, and cheap evaluation. One-step \(\Delta\)F1 ranges from 0.87 to 0.99 for IC, LT, and CLT and from 0.85 to 0.86 for SIR and SIS, with Brier scores of at most 0.0006. Free-running rollouts stay within 2.2% of the trusted simulator at the horizon, except under LT, where the model undercounts by 6.0%.
+        </p>
+      </div>
+      <div class="columns is-variable is-5">
+        <div class="column">
+          <p class="table-caption"><strong>Prediction and rollout quality</strong> on Network Science (IC, LT), Email-EU (CLT), and Oregon1 (SIR, SIS)</p>
+          <div class="table-scroll">
+            <table class="results-table compact-table">
+              <thead>
+                <tr><th>Dynamics</th><th>\(\Delta\)F1 (&uarr;)</th><th>Brier (&darr;)</th><th>Bias (%)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>IC</td><td>0.8738</td><td>0.0003</td><td>+0.1</td></tr>
+                <tr><td>LT</td><td>0.9926</td><td>0.0003</td><td>&minus;6.0</td></tr>
+                <tr><td>CLT</td><td>0.9880</td><td>0.0001</td><td>&minus;2.2</td></tr>
+                <tr><td>SIR</td><td>0.8565</td><td>0.0006</td><td>+0.5</td></tr>
+                <tr><td>SIS</td><td>0.8461</td><td>0.0006</td><td>&minus;0.1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="column">
+          <p class="table-caption"><strong>Decision value</strong> on 20 held-out networks per family; regret in % of reward against Monte Carlo selection</p>
+          <div class="table-scroll">
+            <table class="results-table compact-table">
+              <thead>
+                <tr><th>Family</th><th>Pref. accuracy [95% CI]</th><th>WM regret</th><th>Random regret</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>SBM (in dist.)</td><td>0.902 [0.890, 0.914]</td><td>0.11</td><td>10.27</td></tr>
+                <tr><td>BA (in dist.)</td><td>0.861 [0.818, 0.902]</td><td>0.13</td><td>12.03</td></tr>
+                <tr><td>WS (shift)</td><td>0.860 [0.832, 0.887]</td><td>1.18</td><td>10.07</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <p>
+          For search, what matters is that the model orders candidates the way the true dynamics would. On held-out SBM and BA networks, it agrees with the trusted simulator on 90.2% and 86.1% of candidate pairs, with selection regret of 0.11% and 0.13%. On Watts-Strogatz networks, a topology shift, preference accuracy stays at 86.0% and regret at 1.18%.
+        </p>
+      </div>
+      <figure class="result-figure is-wide">
+        <a href="static/images/rollout_bias_by_step.png" target="_blank" rel="noopener" title="Open full size"><img src="static/images/rollout_bias_by_step.png" loading="lazy" alt="Relative count bias of the free-running rollout by step on Network Science and Power Grid."></a>
+        <figcaption>Relative count bias of the free-running sampled rollout by step on the 50 held-out episodes of the main runs. The bias settles within the first few steps and does not grow, so one-step error does not compound over a rollout.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <!-- BibTeX citation -->
+  <section class="section hero is-light" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <!-- TODO: placeholder citation, replace with the arXiv entry once the paper is posted -->
+      <pre id="bibtex-code"><code>@article{alagharu2026network,
+  title={Network World Models as Environments for Algorithm Design on Complex Systems},
+  author={Alagharu, Rishab and Pu, Hongji and Memon, Zeeshan and Song, Xinyuan and Hu, Yuntong and Zhao, Liang},
+  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  year={2026}
+}</code></pre>
+    </div>
+  </section>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

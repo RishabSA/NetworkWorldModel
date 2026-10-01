@@ -101,7 +101,7 @@
     "url": "https://rishabsa.github.io/NetworkWorldModel/",
     "image": "https://rishabsa.github.io/NetworkWorldModel/static/images/social_preview.png",
     "keywords": ["network world models", "automated algorithm design", "network learning", "diffusion dynamics"],
-    "abstract": "World models, which simulate an environment and predict how it changes under actions, are increasingly used in real-world applications such as robotics. Complex systems call for the same tool because the effect of an action is not immediate. Seeding nodes for a campaign, or immunizing nodes against an epidemic, changes little on its own; what matters is the outcome that unfolds over the steps that follow. Designing an algorithm that selects such actions to maximize expected performance on a task is inherently iterative, and every candidate must be scored by the outcome it produces. Obtaining that outcome has relied on simulation, whose cost becomes a bottleneck when candidates are evaluated over many sampled trajectories. We propose an action-conditioned Network World Model that learns a network's diffusion dynamics under interventions over time, applies each action to the network, and predicts the outcome that follows. It serves as a fast evaluator inside an algorithm design loop in which a coding agent designs and refines executable algorithms using feedback from full rollouts, action-level credit, and counterfactual probes over alternative interventions. Across eight network tasks and five diffusion models, the designed algorithms match or exceed the strongest reported baseline in 118 of 121 settings while enabling up to 14.5 times faster rollouts than Monte Carlo simulation.",
+    "abstract": "World models, which simulate an environment and predict how it changes under actions, are increasingly used in real-world applications such as robotics. Complex systems call for the same tool because the effect of an action is not immediate. Seeding nodes for a campaign, or immunizing nodes against an epidemic, changes little on its own; what matters is the outcome that unfolds over the steps that follow. Designing an algorithm that selects such actions to maximize expected performance on a task is inherently iterative, and every candidate must be scored by the outcome it produces. Obtaining that outcome has relied on simulation, whose cost becomes a bottleneck when candidates are evaluated over many sampled trajectories. We propose an action-conditioned Network World Model that learns a network's diffusion dynamics under interventions over time, applies each action to the network, and predicts the outcome that follows. It serves as a fast evaluator inside an algorithm design loop in which a coding agent designs and refines executable algorithms using feedback from full rollouts, action-level credit, and counterfactual probes over alternative interventions. Across eight network tasks and five diffusion models, the designed algorithms match or exceed the strongest reported baseline in 138 of 141 settings while enabling up to 14.5 times faster rollouts than Monte Carlo simulation.",
     "isAccessibleForFree": true
   }
   </script>
@@ -201,7 +201,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            <p>World models, which simulate an environment and predict how it changes under actions, are increasingly used in real-world applications such as robotics. Complex systems call for the same tool because the effect of an action is not immediate. Seeding nodes for a campaign, or immunizing nodes against an epidemic, changes little on its own; what matters is the outcome that unfolds over the steps that follow. Designing an algorithm that selects such actions to maximize expected performance on a task is inherently iterative, and every candidate must be scored by the outcome it produces. Obtaining that outcome has relied on simulation, whose cost becomes a bottleneck when candidates are evaluated over many sampled trajectories. We propose an action-conditioned Network World Model that learns a network's diffusion dynamics under interventions over time, applies each action to the network, and predicts the outcome that follows. It serves as a fast evaluator inside an algorithm design loop in which a coding agent designs and refines executable algorithms using feedback from full rollouts, action-level credit, and counterfactual probes over alternative interventions. Across eight network tasks and five diffusion models, the designed algorithms match or exceed the strongest reported baseline in 118 of 121 settings while enabling up to 14.5 times faster rollouts than Monte Carlo simulation.</p>
+            <p>World models, which simulate an environment and predict how it changes under actions, are increasingly used in real-world applications such as robotics. Complex systems call for the same tool because the effect of an action is not immediate. Seeding nodes for a campaign, or immunizing nodes against an epidemic, changes little on its own; what matters is the outcome that unfolds over the steps that follow. Designing an algorithm that selects such actions to maximize expected performance on a task is inherently iterative, and every candidate must be scored by the outcome it produces. Obtaining that outcome has relied on simulation, whose cost becomes a bottleneck when candidates are evaluated over many sampled trajectories. We propose an action-conditioned Network World Model that learns a network's diffusion dynamics under interventions over time, applies each action to the network, and predicts the outcome that follows. It serves as a fast evaluator inside an algorithm design loop in which a coding agent designs and refines executable algorithms using feedback from full rollouts, action-level credit, and counterfactual probes over alternative interventions. Across eight network tasks and five diffusion models, the designed algorithms match or exceed the strongest reported baseline in 138 of 141 settings while enabling up to 14.5 times faster rollouts than Monte Carlo simulation.</p>
           </div>
         </div>
       </div>
@@ -215,7 +215,7 @@
       <h2 class="title is-3 has-text-centered">Key Results</h2>
       <div class="stat-grid">
         <div class="stat-card">
-          <div class="stat-value">118<span class="stat-of">/121</span></div>
+          <div class="stat-value">138<span class="stat-of">/141</span></div>
           <div class="stat-label">settings where the designed algorithm matches or exceeds the strongest reported baseline</div>
         </div>
         <div class="stat-card">
@@ -384,7 +384,7 @@
       </div>
 
       <details class="datasets-details">
-        <summary>Datasets: 17 networks, from 1,005 to 616,316 nodes</summary>
+        <summary>Datasets: 20 networks, from 1,005 to 616,316 nodes</summary>
         <div class="table-scroll">
           <table class="results-table datasets-table">
             <thead>
@@ -401,9 +401,12 @@
               <tr><td>PGP</td><td>10,680</td><td>24,316</td><td>Critical node detection</td></tr>
               <tr><td>Infectious SocioPatterns</td><td>10,972</td><td>44,517</td><td>Epidemic control</td></tr>
               <tr><td>NetHEPT</td><td>15,229</td><td>62,752</td><td>Influence maximization, adaptive influence maximization</td></tr>
+              <tr><td>RT-Pol</td><td>18,470</td><td>48,053</td><td>Cascade reconstruction</td></tr>
               <tr><td>Gnutella24</td><td>26,518</td><td>65,369</td><td>Influence blocking</td></tr>
+              <tr><td>Cit-HepTh</td><td>27,769</td><td>352,768</td><td>Influence blocking</td></tr>
               <tr><td>Taoke</td><td>29,711</td><td>95,012</td><td>Cascade prediction</td></tr>
               <tr><td>Deezer</td><td>47,538</td><td>222,887</td><td>Source localization</td></tr>
+              <tr><td>Brightkite</td><td>58,228</td><td>214,078</td><td>Epidemic control</td></tr>
               <tr><td>Gnutella31</td><td>62,561</td><td>147,878</td><td>Critical node detection</td></tr>
               <tr><td>Digg</td><td>116,893</td><td>2,011,447</td><td>Influence maximization, adaptive influence maximization</td></tr>
               <tr><td>Digg (cascades)</td><td>279,630</td><td>1,731,653</td><td>Cascade prediction</td></tr>
@@ -430,7 +433,7 @@
       <h3 class="title is-4 subsection-title">Designed algorithms against the strongest baselines</h3>
       <div class="content">
         <p>
-          The designed algorithms improve on the strongest existing method in seven tasks and match it on epidemic control, matching or exceeding the strongest reported baseline in 118 of 121 settings. Each cell reports IC&nbsp;/&nbsp;LT (IC&nbsp;/&nbsp;CLT for influence blocking, SIR&nbsp;/&nbsp;SIS for epidemic control). Bold marks the best value, and n/a marks an out-of-memory error or a timeout.
+          The designed algorithms improve on the strongest existing method in all eight tasks and match or exceed the strongest reported baseline in 138 of 141 settings. Each cell reports IC&nbsp;/&nbsp;LT (IC&nbsp;/&nbsp;CLT for influence blocking, SIR&nbsp;/&nbsp;SIS for epidemic control). Bold marks the best value, and n/a marks an out-of-memory error or a timeout.
         </p>
       </div>
       <div class="results-tabs">
@@ -524,16 +527,16 @@
   <div class="table-scroll">
     <table class="results-table">
       <thead>
-        <tr><th></th><th colspan="4" class="group-head">Infectious SocioPatterns (10,972 nodes)</th><th colspan="4" class="group-head">Oregon1 (10,670 nodes)</th></tr>
-        <tr><th>Method</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th></tr>
+        <tr><th></th><th colspan="4" class="group-head">Infectious SocioPatterns (10,972 nodes)</th><th colspan="4" class="group-head">Oregon1 (10,670 nodes)</th><th colspan="4" class="group-head">Brightkite (58,228 nodes)</th></tr>
+        <tr><th>Method</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th><th>1%</th><th>5%</th><th>10%</th><th>20%</th></tr>
       </thead>
       <tbody>
-        <tr><td>DAVA</td><td><strong>19.9</strong><span class="pair-sep">/</span>23.0</td><td><strong>7.4</strong><span class="pair-sep">/</span>8.3</td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td>7.9<span class="pair-sep">/</span>9.6</td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td></tr>
-        <tr><td>NetShield+</td><td>21.2<span class="pair-sep">/</span>24.9</td><td>17.3<span class="pair-sep">/</span>20.6</td><td>12.8<span class="pair-sep">/</span>15.6</td><td>7.4<span class="pair-sep">/</span>8.9</td><td>4.3<span class="pair-sep">/</span>5.4</td><td>2.1<span class="pair-sep">/</span>2.3</td><td>1.8<span class="pair-sep">/</span>1.9</td><td>1.6<span class="pair-sep">/</span>1.7</td></tr>
-        <tr><td>GreedyWalk</td><td>20.9<span class="pair-sep">/</span>24.6</td><td>16.5<span class="pair-sep">/</span>19.8</td><td>12.3<span class="pair-sep">/</span>14.9</td><td>7.0<span class="pair-sep">/</span>8.5</td><td>4.8<span class="pair-sep">/</span>5.9</td><td>2.5<span class="pair-sep">/</span>2.8</td><td>1.9<span class="pair-sep">/</span>2.1</td><td>1.6<span class="pair-sep">/</span>1.7</td></tr>
-        <tr><td>EI</td><td>20.7<span class="pair-sep">/</span>24.4</td><td>16.3<span class="pair-sep">/</span>19.3</td><td>11.5<span class="pair-sep">/</span>13.6</td><td>8.1<span class="pair-sep">/</span>9.5</td><td>4.2<span class="pair-sep">/</span>5.2</td><td>2.0<span class="pair-sep">/</span>2.1</td><td>1.7<span class="pair-sep">/</span>1.8</td><td>1.6<span class="pair-sep">/</span>1.6</td></tr>
-        <tr><td>CI</td><td>20.7<span class="pair-sep">/</span>24.3</td><td>16.1<span class="pair-sep">/</span>18.9</td><td>12.4<span class="pair-sep">/</span>14.6</td><td>6.9<span class="pair-sep">/</span>8.1</td><td>4.2<span class="pair-sep">/</span>5.2</td><td>2.0<span class="pair-sep">/</span>2.1</td><td>1.7<span class="pair-sep">/</span>1.8</td><td>1.6<span class="pair-sep">/</span>1.6</td></tr>
-        <tr class="ours"><td>Network World Model</td><td>20.4<span class="pair-sep">/</span><strong>19.5</strong></td><td>12.2<span class="pair-sep">/</span><strong>4.1</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>2.4</strong><span class="pair-sep">/</span><strong>4.3</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td></tr>
+        <tr><td>DAVA</td><td><strong>19.9</strong><span class="pair-sep">/</span>23.0</td><td><strong>7.4</strong><span class="pair-sep">/</span>8.3</td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td>7.9<span class="pair-sep">/</span>9.6</td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td>40.9<span class="pair-sep">/</span>47.1</td><td><span class="na">n/a</span></td><td><span class="na">n/a</span></td><td><span class="na">n/a</span></td></tr>
+        <tr><td>NetShield+</td><td>21.2<span class="pair-sep">/</span>24.9</td><td>17.3<span class="pair-sep">/</span>20.6</td><td>12.8<span class="pair-sep">/</span>15.6</td><td>7.4<span class="pair-sep">/</span>8.9</td><td>4.3<span class="pair-sep">/</span>5.4</td><td>2.1<span class="pair-sep">/</span>2.3</td><td>1.8<span class="pair-sep">/</span>1.9</td><td>1.6<span class="pair-sep">/</span>1.7</td><td>24.1<span class="pair-sep">/</span>29.4</td><td>8.5<span class="pair-sep">/</span>10.5</td><td>4.5<span class="pair-sep">/</span>5.4</td><td>2.7<span class="pair-sep">/</span>3.0</td></tr>
+        <tr><td>GreedyWalk</td><td>20.9<span class="pair-sep">/</span>24.6</td><td>16.5<span class="pair-sep">/</span>19.8</td><td>12.3<span class="pair-sep">/</span>14.9</td><td>7.0<span class="pair-sep">/</span>8.5</td><td>4.8<span class="pair-sep">/</span>5.9</td><td>2.5<span class="pair-sep">/</span>2.8</td><td>1.9<span class="pair-sep">/</span>2.1</td><td>1.6<span class="pair-sep">/</span>1.7</td><td><strong>23.2</strong><span class="pair-sep">/</span>28.4</td><td>8.4<span class="pair-sep">/</span>10.5</td><td>4.6<span class="pair-sep">/</span>5.5</td><td>2.8<span class="pair-sep">/</span>3.1</td></tr>
+        <tr><td>EI</td><td>20.7<span class="pair-sep">/</span>24.4</td><td>16.3<span class="pair-sep">/</span>19.3</td><td>11.5<span class="pair-sep">/</span>13.6</td><td>8.1<span class="pair-sep">/</span>9.5</td><td>4.2<span class="pair-sep">/</span>5.2</td><td>2.0<span class="pair-sep">/</span>2.1</td><td>1.7<span class="pair-sep">/</span>1.8</td><td>1.6<span class="pair-sep">/</span>1.6</td><td>23.5<span class="pair-sep">/</span>28.7</td><td>8.7<span class="pair-sep">/</span>10.9</td><td>4.5<span class="pair-sep">/</span>5.3</td><td>2.8<span class="pair-sep">/</span>3.1</td></tr>
+        <tr><td>CI</td><td>20.7<span class="pair-sep">/</span>24.3</td><td>16.1<span class="pair-sep">/</span>18.9</td><td>12.4<span class="pair-sep">/</span>14.6</td><td>6.9<span class="pair-sep">/</span>8.1</td><td>4.2<span class="pair-sep">/</span>5.2</td><td>2.0<span class="pair-sep">/</span>2.1</td><td>1.7<span class="pair-sep">/</span>1.8</td><td>1.6<span class="pair-sep">/</span>1.6</td><td>26.0<span class="pair-sep">/</span>31.1</td><td>10.2<span class="pair-sep">/</span>12.3</td><td>4.7<span class="pair-sep">/</span>5.5</td><td>2.7<span class="pair-sep">/</span>3.0</td></tr>
+        <tr class="ours"><td>Network World Model</td><td>20.4<span class="pair-sep">/</span><strong>19.5</strong></td><td>12.2<span class="pair-sep">/</span><strong>4.1</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>2.4</strong><span class="pair-sep">/</span><strong>4.3</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>23.2</strong><span class="pair-sep">/</span><strong>24.5</strong></td><td><strong>1.4</strong><span class="pair-sep">/</span><strong>1.5</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td><td><strong>1.0</strong><span class="pair-sep">/</span><strong>1.0</strong></td></tr>
       </tbody>
     </table>
   </div>
@@ -561,15 +564,15 @@
   <div class="table-scroll">
     <table class="results-table">
       <thead>
-        <tr><th>Method</th><th>UCI Students (1,266 nodes)</th><th>CA-GrQc (5,242 nodes)</th></tr>
+        <tr><th>Method</th><th>UCI Students (1,266 nodes)</th><th>CA-GrQc (5,242 nodes)</th><th>RT-Pol (18,470 nodes)</th></tr>
       </thead>
       <tbody>
-        <tr><td>Reports</td><td>−0.852<span class="pair-sep">/</span>−0.946</td><td>−0.791<span class="pair-sep">/</span>−0.692</td></tr>
-        <tr><td>Steiner Tree</td><td>−0.901<span class="pair-sep">/</span>−0.978</td><td>−0.798<span class="pair-sep">/</span>−0.753</td></tr>
-        <tr><td>Jordan-Backward</td><td>−0.852<span class="pair-sep">/</span>−0.946</td><td>−0.791<span class="pair-sep">/</span>−0.692</td></tr>
-        <tr><td>DHREC</td><td>−1.464<span class="pair-sep">/</span>−1.525</td><td>−1.175<span class="pair-sep">/</span>−1.176</td></tr>
-        <tr><td>CRI</td><td>−0.885<span class="pair-sep">/</span>−0.995</td><td>−1.106<span class="pair-sep">/</span>−1.151</td></tr>
-        <tr class="ours"><td>Network World Model</td><td><strong>−0.675</strong><span class="pair-sep">/</span><strong>−0.717</strong></td><td><strong>−0.566</strong><span class="pair-sep">/</span><strong>−0.566</strong></td></tr>
+        <tr><td>Reports</td><td>−0.852<span class="pair-sep">/</span>−0.946</td><td>−0.791<span class="pair-sep">/</span>−0.692</td><td>−1.252<span class="pair-sep">/</span>−1.068</td></tr>
+        <tr><td>Steiner Tree</td><td>−0.901<span class="pair-sep">/</span>−0.978</td><td>−0.798<span class="pair-sep">/</span>−0.753</td><td>−2.618<span class="pair-sep">/</span>−2.076</td></tr>
+        <tr><td>Jordan-Backward</td><td>−0.852<span class="pair-sep">/</span>−0.946</td><td>−0.791<span class="pair-sep">/</span>−0.692</td><td>−1.252<span class="pair-sep">/</span>−1.068</td></tr>
+        <tr><td>DHREC</td><td>−1.464<span class="pair-sep">/</span>−1.525</td><td>−1.175<span class="pair-sep">/</span>−1.176</td><td>−2.471<span class="pair-sep">/</span>−2.594</td></tr>
+        <tr><td>CRI</td><td>−0.885<span class="pair-sep">/</span>−0.995</td><td>−1.106<span class="pair-sep">/</span>−1.151</td><td>−0.785<span class="pair-sep">/</span>−0.782</td></tr>
+        <tr class="ours"><td>Network World Model</td><td><strong>−0.675</strong><span class="pair-sep">/</span><strong>−0.717</strong></td><td><strong>−0.566</strong><span class="pair-sep">/</span><strong>−0.566</strong></td><td><strong>−0.391</strong><span class="pair-sep">/</span><strong>−0.373</strong></td></tr>
       </tbody>
     </table>
   </div>

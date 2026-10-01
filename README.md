@@ -23,11 +23,11 @@
 
 ## Abstract
 
-World models, which simulate an environment and predict how it changes under actions, are increasingly used in real-world applications such as robotics. Complex systems call for the same tool because the effect of an action is not immediate. Seeding nodes for a campaign, or immunizing nodes against an epidemic, changes little on its own; what matters is the outcome that unfolds over the steps that follow. Designing an algorithm that selects such actions to maximize expected performance on a task is inherently iterative, and every candidate must be scored by the outcome it produces. Obtaining that outcome has relied on simulation, whose cost becomes a bottleneck when candidates are evaluated over many sampled trajectories. We propose an action-conditioned Network World Model that learns a network's diffusion dynamics under interventions over time, applies each action to the network, and predicts the outcome that follows. It serves as a fast evaluator inside an algorithm design loop in which a coding agent designs and refines executable algorithms using feedback from full rollouts, action-level credit, and counterfactual probes over alternative interventions. Across eight network tasks and five diffusion models, the designed algorithms match or exceed the strongest reported baseline in 118 of 121 settings while enabling up to 14.5 times faster rollouts than Monte Carlo simulation.
+World models, which simulate an environment and predict how it changes under actions, are increasingly used in real-world applications such as robotics. Complex systems call for the same tool because the effect of an action is not immediate. Seeding nodes for a campaign, or immunizing nodes against an epidemic, changes little on its own; what matters is the outcome that unfolds over the steps that follow. Designing an algorithm that selects such actions to maximize expected performance on a task is inherently iterative, and every candidate must be scored by the outcome it produces. Obtaining that outcome has relied on simulation, whose cost becomes a bottleneck when candidates are evaluated over many sampled trajectories. We propose an action-conditioned Network World Model that learns a network's diffusion dynamics under interventions over time, applies each action to the network, and predicts the outcome that follows. It serves as a fast evaluator inside an algorithm design loop in which a coding agent designs and refines executable algorithms using feedback from full rollouts, action-level credit, and counterfactual probes over alternative interventions. Across eight network tasks and five diffusion models, the designed algorithms match or exceed the strongest reported baseline in 138 of 141 settings while enabling up to 14.5 times faster rollouts than Monte Carlo simulation.
 
 ## Key Results
 
-- **118 of 121 settings**: the designed algorithms match or exceed the strongest reported baseline across eight tasks and five diffusion models.
+- **138 of 141 settings**: the designed algorithms match or exceed the strongest reported baseline across eight tasks and five diffusion models.
 - **14.5&times; faster rollouts** than Monte Carlo simulation on Digg (116,893 nodes), and 4.0&times; on Power Grid. The world model pays for its training data after about five searches.
 - **0.11% selection regret** against Monte Carlo selection on held-out SBM networks, with 90.2% pairwise preference accuracy.
 - **Best at every budget** against four published LLM algorithm discovery systems (EoH, OpenEvolve, LLaMEA, ReEvo) on influence maximization and critical node detection.
@@ -95,7 +95,7 @@ Every returned algorithm and every baseline is replayed independently on the tru
 
 ### Designed algorithms against the strongest baselines
 
-The designed algorithms improve on the strongest existing method in seven tasks and match it on epidemic control. Each cell reports IC / LT (IC / CLT for influence blocking, SIR / SIS for epidemic control). Bold marks the best value, and n/a marks an out-of-memory error or a timeout. Expand a task to see its table.
+The designed algorithms improve on the strongest existing method in all eight tasks and match or exceed the strongest reported baseline in 138 of 141 settings. Each cell reports IC / LT (IC / CLT for influence blocking, SIR / SIS for epidemic control). Bold marks the best value, and n/a marks an out-of-memory error or a timeout. Expand a task to see its table.
 
 <details>
 <summary><b>Influence maximization</b> (IC / LT): spread, % of nodes activated (↑)</summary>
@@ -228,6 +228,17 @@ The designed algorithms improve on the strongest existing method in seven tasks 
 | CI | 4.2 / 5.2 | 2.0 / 2.1 | 1.7 / 1.8 | 1.6 / 1.6 |
 | **Network World Model** | **2.4** / **4.3** | **1.0** / **1.0** | **1.0** / **1.0** | **1.0** / **1.0** |
 
+**Brightkite (58,228 nodes)**
+
+| Method | 1% | 5% | 10% | 20% |
+| --- | :---: | :---: | :---: | :---: |
+| DAVA | 40.9 / 47.1 | n/a | n/a | n/a |
+| NetShield+ | 24.1 / 29.4 | 8.5 / 10.5 | 4.5 / 5.4 | 2.7 / 3.0 |
+| GreedyWalk | **23.2** / 28.4 | 8.4 / 10.5 | 4.6 / 5.5 | 2.8 / 3.1 |
+| EI | 23.5 / 28.7 | 8.7 / 10.9 | 4.5 / 5.3 | 2.8 / 3.1 |
+| CI | 26.0 / 31.1 | 10.2 / 12.3 | 4.7 / 5.5 | 2.7 / 3.0 |
+| **Network World Model** | **23.2** / **24.5** | **1.4** / **1.5** | **1.0** / **1.0** | **1.0** / **1.0** |
+
 </details>
 
 <details>
@@ -247,14 +258,14 @@ The designed algorithms improve on the strongest existing method in seven tasks 
 <details>
 <summary><b>Cascade reconstruction</b> (IC / LT): referee reward of the decoded history, 0 is perfect (↑)</summary>
 
-| Method | UCI Students (1,266 nodes) | CA-GrQc (5,242 nodes) |
-| --- | :---: | :---: |
-| Reports | −0.852 / −0.946 | −0.791 / −0.692 |
-| Steiner Tree | −0.901 / −0.978 | −0.798 / −0.753 |
-| Jordan-Backward | −0.852 / −0.946 | −0.791 / −0.692 |
-| DHREC | −1.464 / −1.525 | −1.175 / −1.176 |
-| CRI | −0.885 / −0.995 | −1.106 / −1.151 |
-| **Network World Model** | **−0.675** / **−0.717** | **−0.566** / **−0.566** |
+| Method | UCI Students (1,266 nodes) | CA-GrQc (5,242 nodes) | RT-Pol (18,470 nodes) |
+| --- | :---: | :---: | :---: |
+| Reports | −0.852 / −0.946 | −0.791 / −0.692 | −1.252 / −1.068 |
+| Steiner Tree | −0.901 / −0.978 | −0.798 / −0.753 | −2.618 / −2.076 |
+| Jordan-Backward | −0.852 / −0.946 | −0.791 / −0.692 | −1.252 / −1.068 |
+| DHREC | −1.464 / −1.525 | −1.175 / −1.176 | −2.471 / −2.594 |
+| CRI | −0.885 / −0.995 | −1.106 / −1.151 | −0.785 / −0.782 |
+| **Network World Model** | **−0.675** / **−0.717** | **−0.566** / **−0.566** | **−0.391** / **−0.373** |
 
 </details>
 
@@ -357,9 +368,12 @@ The datasets used in the experiments, ordered by node count. Directed networks q
 | PGP | `pgp` | 10,680 | 24,316 | Critical node detection |
 | Infectious SocioPatterns | `infectious_sociopatterns` | 10,972 | 44,517 | Epidemic control |
 | NetHEPT | `nethept` | 15,229 | 62,752 | Influence maximization, adaptive influence maximization |
+| RT-Pol | `rt_pol` | 18,470 | 48,053 | Cascade reconstruction |
 | Gnutella24 | `p2p_gnutella24` | 26,518 | 65,369 | Influence blocking |
+| Cit-HepTh | `cit_hepth` | 27,769 | 352,768 | Influence blocking |
 | Taoke | `taoke` | 29,711 | 95,012 | Cascade prediction |
 | Deezer | `deezer` | 47,538 | 222,887 | Source localization |
+| Brightkite | `brightkite` | 58,228 | 214,078 | Epidemic control |
 | Gnutella31 | `p2p_gnutella` | 62,561 | 147,878 | Critical node detection |
 | Digg | `digg` | 116,893 | 2,011,447 | Influence maximization, adaptive influence maximization |
 | Digg (cascades) | `digg_cascades` | 279,630 | 1,731,653 | Cascade prediction |

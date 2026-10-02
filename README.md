@@ -9,8 +9,8 @@
 <sup>&dagger;</sup>Corresponding author
 
 [![Project Page](https://img.shields.io/badge/Project-Page-2563eb?style=for-the-badge)](https://rishabsa.github.io/NetworkWorldModel/)
-[![arXiv](https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/XXXX.XXXXX)
-[![Paper](https://img.shields.io/badge/Paper-PDF-1e293b?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://arxiv.org/pdf/XXXX.XXXXX)
+[![arXiv](https://img.shields.io/badge/arXiv-2610.01048-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2610.01048)
+[![Paper](https://img.shields.io/badge/Paper-PDF-1e293b?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://arxiv.org/pdf/2610.01048)
 [![License: MIT](https://img.shields.io/badge/License-MIT-34a853?style=for-the-badge)](LICENSE)
 
 </div>
@@ -591,7 +591,7 @@ If you find this work useful, please cite:
 @article{alagharu2026network,
   title={Network World Models as Environments for Algorithm Design on Complex Systems},
   author={Alagharu, Rishab and Pu, Hongji and Memon, Zeeshan and Song, Xinyuan and Hu, Yuntong and Zhao, Liang},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  journal={arXiv preprint arXiv:2610.01048},
   year={2026}
 }
 ```

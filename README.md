@@ -588,11 +588,14 @@ uv run python -m baselines.check_discovery
 If you find this work useful, please cite:
 
 ```bibtex
-@article{alagharu2026network,
-  title={Network World Models as Environments for Algorithm Design on Complex Systems},
-  author={Alagharu, Rishab and Pu, Hongji and Memon, Zeeshan and Song, Xinyuan and Hu, Yuntong and Zhao, Liang},
-  journal={arXiv preprint arXiv:2610.01048},
-  year={2026}
+@misc{alagharu2026networkworldmodelsenvironments,
+      title={Network World Models as Environments for Algorithm Design on Complex Systems},
+      author={Rishab Alagharu and Hongji Pu and Zeeshan Memon and Xinyuan Song and Yuntong Hu and Liang Zhao},
+      year={2026},
+      eprint={2610.01048},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2610.01048},
 }
 ```
 
